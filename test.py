@@ -1,11 +1,14 @@
 from langchain_groq import ChatGroq
+from dotenv import load_dotenv
+import os
 
-API_KEY = "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"
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
 llm = ChatGroq(
     model = 'openai/gpt-oss-120b',
     api_key = API_KEY
-    
 )
+
 response = llm.invoke("What is the capital of France?")
 print(response.content)
